@@ -108,4 +108,13 @@ class Articles
 
         return $this;
     }
+
+    public function getAuthorName(): ?string
+{
+    if ($this->user_id) {
+        return $this->user_id->getNom() . ' ' . $this->user_id->getPrenom();
+    }
+
+    return null;
+}
 }

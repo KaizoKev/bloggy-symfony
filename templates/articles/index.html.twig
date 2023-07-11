@@ -14,6 +14,7 @@
                 <th>Description</th>
                 <th>Contenu</th>
                 <th>Créer le</th>
+                <th>Créer par</th>
                 <th>Mis à jour le</th>
                 <th>Actions</th>
             </tr>
@@ -26,10 +27,11 @@
                 <td>{{ article.description }}</td>
                 <td>{{ article.contenu }}</td>
                 <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ article.getAuthorName }}</td>
                 <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <button class="btn btn-primary" href="{{ path('app_articles_show', {'id': article.id}) }}">Voir</button>
-                    <button class="btn btn-danger" href="{{ path('app_articles_edit', {'id': article.id}) }}">Editer</button>
+                    <button class="btn btn-secondary" href="{{ path('app_articles_edit', {'id': article.id}) }}">Editer</button>
                 </td>
             </tr>
         {% else %}
