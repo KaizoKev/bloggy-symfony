@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AuthController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+
+	<div class="example-wrapper">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs">
+								<li class="nav-item">
+									<a class="nav-link active" id="login-tab" data-toggle="tab" href="#login">Connexion</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="register-tab" data-toggle="tab" href="#register">Inscription</a>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body">
+							<div class="tab-content">
+								<div class="tab-pane fade show active" id="login">
+									<form>
+										<div class="form-group">
+											<label for="loginEmail">Email</label>
+											<input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Votre email">
+										</div>
+										<div class="form-group">
+											<label for="loginPassword">Mot de passe</label>
+											<input type="password" class="form-control" id="loginPassword" placeholder="Mot de passe">
+										</div>
+										<button type="submit" class="mt-5 btn btn-primary">Connexion</button>
+									</form>
+								</div>
+								<div class="tab-pane fade" id="register">
+                                <form action="" method="POST">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="registerEmail">Nom</label>
+												<input type="text" class="form-control" id="registerNom" aria-describedby="emailHelp" name="nom" placeholder="Votre email">
+											</div>
+											<div class="form-group">
+												<label for="registerEmail">Prénom</label>
+												<input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" name="prenom" placeholder="Votre email">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="registerEmail">Email</label>
+												<input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" name="email" placeholder="Votre email">
+											</div>
+											<div class="form-group">
+												<label for="registerPassword">Mot de passe</label>
+												<input type="password" class="form-control" id="registerPassword" name="password" placeholder="Mot de passe">
+											</div>
+										</div>
+									</div>
+
+
+									<button type="submit" class="mt-5 btn btn-primary">Inscription</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}
