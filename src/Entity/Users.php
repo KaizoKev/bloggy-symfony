@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\UsersRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UsersRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
-class Users
+
+class Users implements UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -131,5 +133,23 @@ class Users
         }
 
         return $this;
+    }
+    public function getRoles(): array
+    {
+        // Retournez ici les rôles de l'utilisateur. Par exemple :
+        return ['ROLE_USER'];
+    }
+
+    public function eraseCredentials(): void
+    {
+        // Ici vous pouvez supprimer toute information sensible que vous ne voulez pas stocker en session.
+        // Ça peut être utile par exemple si vous stockez un token en mémoire.
+    }
+
+    public function getUserIdentifier(): string
+    {
+        // Cette méthode doit retourner une chaîne qui identifie l'utilisateur de manière unique.
+        // Le plus souvent, c'est l'email.
+        return $this->email;
     }
 }
