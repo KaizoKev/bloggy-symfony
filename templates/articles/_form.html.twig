@@ -2,5 +2,6 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn btn-primary">{{ button_label|default('Sauvegarder') }}</button>
+    <a class="btn btn-secondary" href="{{ path('app_articles_index') }}">Retourner à la liste</a>
 {{ form_end(form) }}
 </div>

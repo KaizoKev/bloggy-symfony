@@ -2,14 +2,16 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Articles;
 use App\Form\ArticlesType;
 use App\Repository\ArticlesRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/articles')]
 class ArticlesController extends AbstractController
@@ -30,6 +32,9 @@ class ArticlesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $article->setCreatedAt(new DateTimeImmutable()); // set current date/time
+            $article->setUpdatedAt(new DateTimeImmutable()); // set current date/time
+            $article->setUserId($this->getUser()); // set current user
             $entityManager->persist($article);
             $entityManager->flush();
 
@@ -57,6 +62,7 @@ class ArticlesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $article->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
 
             return $this->redirectToRoute('app_articles_index', [], Response::HTTP_SEE_OTHER);

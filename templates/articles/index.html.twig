@@ -5,7 +5,7 @@
 {% block body %}
 <div class="container">
     <h1 class="text-center">Liste des articles</h1>
-
+    <a class="btn btn-primary mb-3" href="{{ path('app_articles_new') }}">Créer un nouvel article</a>
     <table class="table">
         <thead>
             <tr>
@@ -40,7 +40,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_articles_new') }}">Créer un nouvel article</a>
+
 
     </div>
 {% endblock %}
